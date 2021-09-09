@@ -25,6 +25,9 @@ REACT_APP_NYTIMES_KEY=key-on-email-or-use-yours
 
 In the project directory, you can run:
 
+### `yarn`
+This will install asssociate dependencies. After this you can start the application using the command below.
+
 ### `yarn start`
 
 Runs the app in the development mode.\
