@@ -6,12 +6,8 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
-import Tooltip from '@material-ui/core/Tooltip';
-
 
 export default function ArticleActions({ article }) {
   const [open, setOpen] = useState(false);

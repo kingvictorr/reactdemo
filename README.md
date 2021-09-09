@@ -1,6 +1,25 @@
-# Getting Started with Create React App
+# React Demo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). Before you can run yarn commands, 
+ensure that these configurations are similar:
+
+`
+Node Version: 14.17.5
+`
+
+`
+NPM Version: 6.14.14
+`
+
+`
+YARN Version: 1.22.11
+`
+### Last Configuration
+One last thing is to create a `.env` file with the following values.
+```
+REACT_APP_NYTIMES_BASE_URL=https://api.nytimes.com/svc/mostpopular/v2/
+REACT_APP_NYTIMES_KEY=key-on-email-or-use-yours
+```
 
 ## Available Scripts
 
