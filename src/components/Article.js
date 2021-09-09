@@ -47,7 +47,7 @@ export default function Article({ article }) {
         })
       }
     }
-  }, [])
+  }, [article.media])
 
   return (
     <Card className={classes.root}>
@@ -61,9 +61,8 @@ export default function Article({ article }) {
       )}
 
       <CardContent>
-        <Typography gutterBottom variant="h5" component="h2">
-          {article.title}
-        </Typography>
+        <Typography gutterBottom variant="h5" component="h2">{article.title}</Typography>
+        <Typography variant="caption" display="block" gutterBottom>{article.byline + " | " + article.published_date}</Typography>
         <Typography variant="body2" color="textSecondary" component="p">{article.abstract}</Typography>
       </CardContent>
       <CardActions disableSpacing>

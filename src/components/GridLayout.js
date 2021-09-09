@@ -36,14 +36,14 @@ export default function FullWidthGrid() {
       })
   }, [])
   const feature = articles[Math.floor(Math.random() * articles.length)];
-  articles.pop(feature);
+  // articles.pop(feature);
   // const briefing = articles.filter(art => art.nytdsection === 'briefing');
   const arts = articles.filter(art => art.nytdsection === 'arts');
   const mag = articles.filter(art => art.nytdsection === 'magazine');
 
   return (
     <div className={classes.root}>
-      <AppBar />
+      <AppBar articles={articles} />
 
       <Grid container spacing={1} className={classes.articles}>
         {/* Feature Article */}
@@ -53,7 +53,7 @@ export default function FullWidthGrid() {
         {/* Magazines Articles */}
         <Grid container item xs={12} sm={4} spacing={1}>
           {mag.map((art) => (
-            <Grid key={art.id} item xs={6}>
+            <Grid key={art.id} item xs={(mag.length === 1)? 12: 6}>
               <Article article={art} />
             </Grid>
           )

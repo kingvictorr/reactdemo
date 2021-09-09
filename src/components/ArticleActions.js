@@ -26,7 +26,6 @@ export default function ArticleActions({ article }) {
   };
 
   const handleAgree = () => {
-    console.log('ARTICLE: ', article);
     window.open(article.url, '_blank')
     setOpen(false);
   }

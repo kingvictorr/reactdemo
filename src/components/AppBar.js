@@ -3,10 +3,12 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import InputBase from '@material-ui/core/InputBase';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 import { alpha, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
+import TextField from '@material-ui/core/TextField';
+import { InputAdornment } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -63,8 +65,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SearchAppBar() {
+export default function SearchAppBar({ articles }) {
   const classes = useStyles();
+  const options = articles.map((option) => {
+    const firstLetter = option.title[0].toUpperCase();
+    return {
+      firstLetter: /[0-9]/.test(firstLetter) ? '0-9' : firstLetter,
+      ...option,
+    };
+  });
 
   return (
     <div className={classes.root}>
@@ -81,19 +90,30 @@ export default function SearchAppBar() {
           <Typography className={classes.title} variant="h6" noWrap>
             My News Site
           </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </div>
+          {/* <div className={classes.search}> */}
+          <Autocomplete
+            id="search"
+            options={options.sort((a, b) => -b.firstLetter.localeCompare(a.firstLetter))}
+            groupBy={(option) => option.firstLetter}
+            getOptionLabel={(option) => option.title}
+            style={{ width: 300, color: 'white' }}
+            renderInput={(params) =>
+              <TextField
+                {...params}
+                label="Search...."
+                variant="standard"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <SearchIcon />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            }
+          />
+
+          {/* </div> */}
         </Toolbar>
       </AppBar>
     </div>
